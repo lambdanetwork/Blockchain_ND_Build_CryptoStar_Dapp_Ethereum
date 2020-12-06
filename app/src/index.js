@@ -8,7 +8,6 @@ const App = {
 
   start: async function() {
     const { web3 } = this;
-
     try {
       // get contract instance
       const networkId = await web3.eth.net.getId();
@@ -22,6 +21,7 @@ const App = {
       const accounts = await web3.eth.getAccounts();
       this.account = accounts[0];
     } catch (error) {
+      console.error(error)
       console.error("Could not connect to contract or chain.");
     }
   },
@@ -41,7 +41,17 @@ const App = {
 
   // Implement Task 4 Modify the front end of the DAPP
   lookUp: async function (){
-    
+    const inputElem = document.getElementById('lookid');
+    const tokenId = inputElem.value;
+    const { lookUptokenIdToStarInfo } = this.meta.methods;
+    try{
+      const result = await lookUptokenIdToStarInfo(tokenId).send({from: this.account});
+      console.log('lookup' + JSON.stringify(result))
+      this.setStatus(JSON.stringify(result))
+      return result;
+    } catch(err){
+      console.error(err)
+    }
   }
 
 };
