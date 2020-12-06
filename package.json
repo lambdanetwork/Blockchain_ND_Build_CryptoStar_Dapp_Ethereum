@@ -1,0 +1,13 @@
+{
+  "name": "star notary",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.1.2",
+    "truffle-hdwallet-provider": "^1.0.0-web3one.5"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
